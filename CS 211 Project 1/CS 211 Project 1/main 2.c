@@ -125,7 +125,7 @@ void merge(int *arr, int lIndex, int mIndex, int rIndex) {
     // Copying the remaining elements
     while (i < n1)
         arr[k++] = L[i++];
-    
+
     while (j < n2)
         arr[k++] = R[j++];
 }
