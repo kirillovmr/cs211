@@ -23,7 +23,7 @@ typedef struct mazeStruct {
 } Maze;
 
 typedef struct nodeStruct {
-    int posX, posY;
+    int posX, posY, height;
     struct nodeStruct *next;
 } Node;
 
@@ -32,6 +32,7 @@ typedef struct nodeStruct {
 Node* initializeStack(int x, int y) {
     Node *head = NULL;
     head = (Node*)malloc(sizeof(Node));
+    head->height = 1;
     head->posX = x;
     head->posY = y;
     head->next = NULL;
@@ -43,6 +44,7 @@ void push(Node **head, int posX, int posY) {
     Node *node = NULL;
     node = (Node*)malloc(sizeof(Node));
     
+    node->height = (*head)->height + 1;
     node->posX = posX;
     node->posY = posY;
     node->next = *head;
@@ -175,6 +177,24 @@ void displayArr(char ***arr, int x, int y) {
     }
 }
 
+void displayStack(Node **head) {
+    Node *tmp = *head;
+    while(tmp != NULL) {
+        printf("(%d,%d) ", tmp->posX, tmp->posY);
+        tmp = tmp->next;
+    }
+    printf("\n");
+}
+
+// Assuming delta may be (0,1] in only one direction
+char getCharInDirection(const int *y1, const int *x1, const int *y2, const int *x2) {
+    if      (*x1 - *x2 == -1) return '>';
+    else if (*x1 - *x2 ==  1) return '<';
+    else if (*y1 - *y2 == -1) return 'v';
+    else if (*y1 - *y2 ==  1) return '^';
+    return '?';
+}
+
 void DFS(Maze *maze) {
     Node *stack = initializeStack(maze->xstart, maze->ystart);
     int x = maze->xstart, y = maze->ystart, newX = 0, newY = 0, i;
@@ -184,6 +204,8 @@ void DFS(Maze *maze) {
     arr[x][y] = 'V';
     
     while (stack != NULL) {
+        // displayStack(&stack);
+        
         // Path was found
         if (stack->posX == maze->xend && stack->posY == maze->yend)
             break;
@@ -205,26 +227,61 @@ void DFS(Maze *maze) {
             }
             
             // If no available neighbour
-            if (i==3)
+            if (i==3) {
+                // printf("No neighbour for (%d,%d)\n",x,y);
                 pop(&stack, &x, &y);
+                // Due to some reason, passed by reference variables may not be updated as fast,
+                // therefore taking positions from top of stack manually.
+                if (stack != NULL) {
+                    x = stack->posX;
+                    y = stack->posY;
+                }
+            }
         }
     }
     
     if (debugMode) { // Display path array
-        printf("\n");
+        printf("\nVisited path:\n");
         displayArr(&arr, maze->xsize+2, maze->ysize+2);
     }
     
     if (stack == NULL)
-        printf("\nSolution was not found\n");
+        printf("\nThe maze has no solution\n");
     else {
-        printf("\nSolution was found\n");
-        // Writing path on original maze array
+        printf("\nSolution path: \n");
+        
+        // Storing stack locally in reverce order
+        int pathSize = stack->height;
+        int positions[pathSize*2];
+        
+        i = pathSize*2-1;
         while(pop(&stack, &x, &y)) {
-            maze->arr[x][y] = '>';
-//            displayArr(&maze->arr, maze->xsize+2, maze->ysize+2);
+            positions[i--] = x;
+            positions[i--] = y;
+            
+            // Writing path on original maze array
+//            if (debugMode) {
+//                maze->arr[x][y] = 'c';
+//            }
         }
+        
+        // Display path
+        char *template;
+        for (i=0; i<pathSize; i++) {
+            template = i==0 ? "(%d,%d)" : ", (%d,%d)";
+            x = positions[2*i];
+            y = positions[2*i+1];
+            printf(template, y, x);
+            
+            // Writing path on original maze array for visualization
+            char d = i<pathSize-1 ? getCharInDirection(&y, &x, &positions[2*(i+1)+1], &positions[2*(i+1)]) : 'e';
+            maze->arr[y][x] = d;
+        }
+        printf("\n");
+        
+        printf("\nSolution visualization:\n");
         displayArr(&maze->arr, maze->xsize+2, maze->ysize+2);
+        printf("\n");
     }
     
     // Clearing
@@ -254,5 +311,7 @@ int main(int argc, const char * argv[]) {
     displayMaze(&maze);
     DFS(&maze);
     
-    return 0; 
+    return 0;
 }
+
+// 01, 23, 45, 67, 89
