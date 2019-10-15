@@ -13,7 +13,7 @@ int main(int argc, const char * argv[]) {
 	int i;
 
 	/* allocation and use of a dynamic ONE dimenstional array */
-	
+
 	/* variable declararion */
 	int *arr1[20];
 	for (i=0; i<20; i++) {
@@ -39,3 +39,22 @@ int main(int argc, const char * argv[]) {
 
 	return 0;
 }
+
+//#define b 3
+//#define c 12
+//#define d 23
+//
+//struct lnode {
+//    char *str; // points to 16 character string
+//    struct lnode *next;
+//};
+//
+//struct lnode A[b][c][d];
+//int store_ele(int h, int i, int j, struct lnode dest) {
+//    A[h][i][j] = dest;
+//    return sizeof(A);
+//}
+//
+//int main() {
+//    return 0;
+//}
