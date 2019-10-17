@@ -22,6 +22,9 @@ struct Queue {
     struct Node* (*back)(struct Queue *this);
     int (*size)(struct Queue *this);
     int (*empty)(struct Queue *this);
+    
+    struct Node* (*search)(struct Queue *this, char *key);
+    int (*delete)(struct Queue *this, char *key);
 };
 
 extern const struct QueueClass {

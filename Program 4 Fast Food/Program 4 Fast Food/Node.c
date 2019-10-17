@@ -11,10 +11,11 @@
 #include "Node.h"
 
 static void destroy(struct Node *this) {
+    free(this->name);
     free(this);
 }
 
-static struct Node* new(char p_name[30], int p_burgers, int p_salads) {
+static struct Node* new(char p_name[30], int p_burgers, int p_salads, boolean inRest) {
     struct Node *n = NULL;
     n = (struct Node*)malloc(sizeof(struct Node));
     
@@ -22,6 +23,7 @@ static struct Node* new(char p_name[30], int p_burgers, int p_salads) {
     n->name = p_name;
     n->burgers = p_burgers;
     n->salads = p_salads;
+    n->inRestaurant = inRest;
     n->next = NULL;
     
     n->destroy = &destroy;

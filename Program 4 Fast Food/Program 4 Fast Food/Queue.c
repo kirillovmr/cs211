@@ -6,6 +6,7 @@
 //  Copyright © 2019 Viktor Kirillov. All rights reserved.
 //
 
+#include <string.h>
 #include <stdio.h>
 #include "Queue.h"
 #include "Node.h"
@@ -50,6 +51,51 @@ static int empty(struct Queue *this) {
     return this->_size == 0 ? 1 : 0;
 }
 
+static struct Node* search(struct Queue *this, char *key) {
+    struct Node *temp = this->front(this);
+    while(temp != NULL) {
+        if (strcmp(temp->name, key) == 0)
+            return temp;
+        temp = temp->next;
+    }
+    return NULL;
+}
+
+static int delete(struct Queue *this, char *key) {
+    if (this->_size == 0)
+        return 0;
+    
+    // If key in Head
+    if (strcmp(this->_Head->name, key) == 0) {
+        this->pop(this);
+        return 1;
+    }
+    
+    struct Node *parent = NULL;
+    struct Node *temp = this->front(this);
+    
+    while(temp != NULL) {
+        if (strcmp(temp->name, key) == 0)
+            break;
+        parent = temp;
+        temp = temp->next;
+    }
+    
+    if (temp == NULL)
+        return 0;
+    
+    parent->next = temp->next;
+    
+    // If we deleted Tail
+    if (temp->next == NULL)
+        this->_Tail = parent;
+        
+    temp->destroy(temp);
+    this->_size -= 1;
+    
+    return 1;
+}
+
 static struct Queue new(void) {
     return (struct Queue) {
         ._Head = NULL,
@@ -61,7 +107,10 @@ static struct Queue new(void) {
         .front  = &front,
         .back   = &back,
         .size   = &size,
-        .empty  = &empty
+        .empty  = &empty,
+        
+        .search = &search,
+        .delete = &delete,
     };
 }
 
