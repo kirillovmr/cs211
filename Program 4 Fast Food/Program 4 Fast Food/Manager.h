@@ -19,6 +19,7 @@ struct Manager {
     void (*addOrder)(struct Manager *this, char type);
     void (*waiting)(struct Manager *this);
     void (*retrieve)(struct Manager *this);
+    void (*listOrders)(struct Manager *this);
     void (*displayOrders)(struct Manager *this);
 };
 

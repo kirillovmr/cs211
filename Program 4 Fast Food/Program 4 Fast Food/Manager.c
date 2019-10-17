@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Manager.h"
 
 void getStringInput(char *dest) {
@@ -48,6 +49,7 @@ static void start(struct Manager *this) {
                 this->retrieve(this);
                 break;
             case 'l':
+                this->listOrders(this);
                 break;
             case 't':
                 break;
@@ -59,7 +61,7 @@ static void start(struct Manager *this) {
                 printf ("For a list of valid commands, type ?\n");
                 break;
         }
-        if (command != 'a' && command != 'c')
+        if (command != 'a' && command != 'c' && command != 'w' && command != 'l')
             Manager.clearToEoln();
     }
 }
@@ -116,7 +118,17 @@ static void addOrder(struct Manager *this, char type) {
 }
 
 static void waiting(struct Manager *this) {
+    char name[30];
+    getStringInput(name);
     
+    struct Node *res = this->q.search(&this->q, name);
+    if (res == NULL) {
+        printf ("Error: There is no Call-ahead order for \"%s\"\n", name);
+        return;
+    }
+    
+    printf ("Call-ahead order \"%s\" is now waiting in the restaurant\n", name);
+    res->inRestaurant = YES;
 }
 
 static void retrieve(struct Manager *this) {
@@ -145,7 +157,7 @@ static void retrieve(struct Manager *this) {
     
     struct Node *t = this->q.front(&this->q);
     while(t != NULL) {
-        if (PreparedBurgers >= t->burgers && PreparedSalads >= t->salads)
+        if (PreparedBurgers >= t->burgers && PreparedSalads >= t->salads && t->inRestaurant == YES)
             break;
         t = t->next;
     }
@@ -158,6 +170,28 @@ static void retrieve(struct Manager *this) {
     printf ("Order was given to \"%s\": %d burgers and %d salads\n", t->name, t->burgers, t->salads);
     if (this->q.delete(&this->q, t->name) == 0) {
         printf("ERROR: Order was not deleted from queue\n");
+    }
+}
+
+static void listOrders(struct Manager *this) {
+    char name[30];
+    getStringInput(name);
+    
+    if (this->q.search(&this->q, name) == NULL) {
+        printf ("Error: There is no order for \"%s\"\n", name);
+        return;
+    }
+    
+    printf ("Order for \"%s\" is behind the following orders\n", name);
+    
+    struct Node *t = this->q.front(&this->q);
+    while(t != NULL) {
+        if (strcmp(t->name, name) == 0)
+            break;
+
+        printf(" *%s* - %d burgers and %d salads for \"%s\"\n",
+               t->inRestaurant==YES?"In-rest":"Call-ahead", t->burgers, t->salads, t->name);
+        t = t->next;
     }
 }
 
@@ -199,6 +233,7 @@ static struct Manager new() {
         .addOrder = &addOrder,
         .waiting = &waiting,
         .retrieve = &retrieve,
+        .listOrders = &listOrders,
         .displayOrders = &displayOrders,
     };
 }
