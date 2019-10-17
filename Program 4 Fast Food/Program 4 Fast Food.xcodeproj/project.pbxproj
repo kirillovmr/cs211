@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C6C0800423578A1800FF76F3 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C6C0800323578A1800FF76F3 /* main.c */; };
+		C6C0801123578AD800FF76F3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6C0801023578AD800FF76F3 /* main.cpp */; };
+		C6C0801723578B6300FF76F3 /* Queue Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6C0801623578B6300FF76F3 /* Queue Tests.cpp */; };
+		C6C0801A23578C6700FF76F3 /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = C6C0801923578C6700FF76F3 /* Queue.c */; };
+		C6C0801C2357A6FE00FF76F3 /* Node tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6C0801B2357A6FE00FF76F3 /* Node tests.cpp */; };
+		C6C0801D2357A7D100FF76F3 /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = C6C0801923578C6700FF76F3 /* Queue.c */; };
+		C6C080202357AE5900FF76F3 /* Node.c in Sources */ = {isa = PBXBuildFile; fileRef = C6C0801F2357AE5900FF76F3 /* Node.c */; };
+		C6F6D8232357D821000B3B2D /* Manager.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F6D8222357D821000B3B2D /* Manager.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C6C07FFE23578A1800FF76F3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		C6C0800C23578AD800FF76F3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C6C0800023578A1800FF76F3 /* Program 4 Fast Food */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Program 4 Fast Food"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C0800323578A1800FF76F3 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		C6C0800E23578AD800FF76F3 /* Fast Food Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Fast Food Tests"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C0801023578AD800FF76F3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C6C0801523578B2100FF76F3 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
+		C6C0801623578B6300FF76F3 /* Queue Tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Queue Tests.cpp"; sourceTree = "<group>"; };
+		C6C0801823578C6700FF76F3 /* Queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
+		C6C0801923578C6700FF76F3 /* Queue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Queue.c; sourceTree = "<group>"; };
+		C6C0801B2357A6FE00FF76F3 /* Node tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Node tests.cpp"; sourceTree = "<group>"; };
+		C6C0801E2357AE5900FF76F3 /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		C6C0801F2357AE5900FF76F3 /* Node.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Node.c; sourceTree = "<group>"; };
+		C6F6D8212357D821000B3B2D /* Manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
+		C6F6D8222357D821000B3B2D /* Manager.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Manager.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C6C07FFD23578A1800FF76F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6C0800B23578AD800FF76F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C6C07FF723578A1800FF76F3 = {
+			isa = PBXGroup;
+			children = (
+				C6C0800223578A1800FF76F3 /* Program 4 Fast Food */,
+				C6C0800F23578AD800FF76F3 /* Fast Food Tests */,
+				C6C0800123578A1800FF76F3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C6C0800123578A1800FF76F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C6C0800023578A1800FF76F3 /* Program 4 Fast Food */,
+				C6C0800E23578AD800FF76F3 /* Fast Food Tests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6C0800223578A1800FF76F3 /* Program 4 Fast Food */ = {
+			isa = PBXGroup;
+			children = (
+				C6C0800323578A1800FF76F3 /* main.c */,
+				C6F6D8212357D821000B3B2D /* Manager.h */,
+				C6F6D8222357D821000B3B2D /* Manager.c */,
+				C6C0801823578C6700FF76F3 /* Queue.h */,
+				C6C0801923578C6700FF76F3 /* Queue.c */,
+				C6C0801E2357AE5900FF76F3 /* Node.h */,
+				C6C0801F2357AE5900FF76F3 /* Node.c */,
+			);
+			path = "Program 4 Fast Food";
+			sourceTree = "<group>";
+		};
+		C6C0800F23578AD800FF76F3 /* Fast Food Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C6C0801523578B2100FF76F3 /* catch.hpp */,
+				C6C0801023578AD800FF76F3 /* main.cpp */,
+				C6C0801623578B6300FF76F3 /* Queue Tests.cpp */,
+				C6C0801B2357A6FE00FF76F3 /* Node tests.cpp */,
+			);
+			path = "Fast Food Tests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C6C07FFF23578A1800FF76F3 /* Program 4 Fast Food */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6C0800723578A1800FF76F3 /* Build configuration list for PBXNativeTarget "Program 4 Fast Food" */;
+			buildPhases = (
+				C6C07FFC23578A1800FF76F3 /* Sources */,
+				C6C07FFD23578A1800FF76F3 /* Frameworks */,
+				C6C07FFE23578A1800FF76F3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Program 4 Fast Food";
+			productName = "Program 4 Fast Food";
+			productReference = C6C0800023578A1800FF76F3 /* Program 4 Fast Food */;
+			productType = "com.apple.product-type.tool";
+		};
+		C6C0800D23578AD800FF76F3 /* Fast Food Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6C0801223578AD800FF76F3 /* Build configuration list for PBXNativeTarget "Fast Food Tests" */;
+			buildPhases = (
+				C6C0800A23578AD800FF76F3 /* Sources */,
+				C6C0800B23578AD800FF76F3 /* Frameworks */,
+				C6C0800C23578AD800FF76F3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Fast Food Tests";
+			productName = "Fast Food Tests";
+			productReference = C6C0800E23578AD800FF76F3 /* Fast Food Tests */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C6C07FF823578A1800FF76F3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = "Viktor Kirillov";
+				TargetAttributes = {
+					C6C07FFF23578A1800FF76F3 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+					C6C0800D23578AD800FF76F3 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+				};
+			};
+			buildConfigurationList = C6C07FFB23578A1800FF76F3 /* Build configuration list for PBXProject "Program 4 Fast Food" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C6C07FF723578A1800FF76F3;
+			productRefGroup = C6C0800123578A1800FF76F3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C6C07FFF23578A1800FF76F3 /* Program 4 Fast Food */,
+				C6C0800D23578AD800FF76F3 /* Fast Food Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C6C07FFC23578A1800FF76F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6C080202357AE5900FF76F3 /* Node.c in Sources */,
+				C6F6D8232357D821000B3B2D /* Manager.c in Sources */,
+				C6C0800423578A1800FF76F3 /* main.c in Sources */,
+				C6C0801A23578C6700FF76F3 /* Queue.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6C0800A23578AD800FF76F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6C0801D2357A7D100FF76F3 /* Queue.c in Sources */,
+				C6C0801723578B6300FF76F3 /* Queue Tests.cpp in Sources */,
+				C6C0801C2357A6FE00FF76F3 /* Node tests.cpp in Sources */,
+				C6C0801123578AD800FF76F3 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C6C0800523578A1800FF76F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C6C0800623578A1800FF76F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C6C0800823578A1800FF76F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C6C0800923578A1800FF76F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C6C0801323578AD800FF76F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C6C0801423578AD800FF76F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C6C07FFB23578A1800FF76F3 /* Build configuration list for PBXProject "Program 4 Fast Food" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6C0800523578A1800FF76F3 /* Debug */,
+				C6C0800623578A1800FF76F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6C0800723578A1800FF76F3 /* Build configuration list for PBXNativeTarget "Program 4 Fast Food" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6C0800823578A1800FF76F3 /* Debug */,
+				C6C0800923578A1800FF76F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6C0801223578AD800FF76F3 /* Build configuration list for PBXNativeTarget "Fast Food Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6C0801323578AD800FF76F3 /* Debug */,
+				C6C0801423578AD800FF76F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C6C07FF823578A1800FF76F3 /* Project object */;
+}
