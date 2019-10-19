@@ -7,7 +7,6 @@
 //
 
 #include <stdlib.h>
-#include <stdio.h>
 #include "Node.h"
 
 static void destroy(struct Node *this) {
@@ -15,29 +14,24 @@ static void destroy(struct Node *this) {
     free(this);
 }
 
-static struct Node* new(char p_name[30], int p_burgers, int p_salads, boolean inRest) {
-    struct Node *n = NULL;
-    n = (struct Node*)malloc(sizeof(struct Node));
-    
+static struct Node* new(char p_name[30], int p_burgers, int p_salads, int p_inRest) {
+    struct Node *n = (struct Node*)malloc(sizeof(struct Node));
     n->name = (char*)malloc(sizeof(char) * 31);
+    
     n->name = p_name;
     n->burgers = p_burgers;
     n->salads = p_salads;
-    n->inRestaurant = inRest;
+    n->inRestaurant = p_inRest;
     n->next = NULL;
-    
-    n->destroy = &destroy;
     
     return n;
 }
 
 static struct Node* newEmpty() {
-    struct Node *n = NULL;
-    n = (struct Node*)malloc(sizeof(struct Node));
+    struct Node *n = (struct Node*)malloc(sizeof(struct Node));
     
-    n->next = NULL;
     n->name = (char*)malloc(sizeof(char) * 31);
-    n->destroy = &destroy;
+    n->next = NULL;
     
     return n;
 }
@@ -46,4 +40,6 @@ static struct Node* newEmpty() {
 const struct NodeClass Node = {
     .new = &new,
     .newEmpty = &newEmpty,
+    
+    .destroy = &destroy,
 };

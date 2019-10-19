@@ -14,20 +14,21 @@
 
 struct Manager {
     struct Queue q;
-    
-    void (*start)(struct Manager *this);
-    void (*addOrder)(struct Manager *this, char type);
-    void (*waiting)(struct Manager *this);
-    void (*retrieve)(struct Manager *this);
-    void (*listOrders)(struct Manager *this);
-    void (*displayOrders)(struct Manager *this);
+    int timeToPrepareBurger;
+    int timeToPrepareSalad;
 };
 
 extern const struct ManagerClass {
     struct Manager (*new)(void);
     
     void (*help)(void);
-    void (*clearToEoln)(void);
+    void (*start)(struct Manager *this);
+    void (*addOrder)(struct Manager *this, char type);
+    void (*waiting)(struct Manager *this);
+    void (*retrieve)(struct Manager *this);
+    void (*listOrders)(struct Manager *this);
+    void (*estimateTime)(struct Manager *this);
+    void (*displayOrders)(struct Manager *this);
 } Manager;
 
 #endif /* Manager_h */

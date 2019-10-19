@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C698D6A9235AAE44001127A2 /* Misc.c in Sources */ = {isa = PBXBuildFile; fileRef = C698D6A8235AAE44001127A2 /* Misc.c */; };
 		C6C0800423578A1800FF76F3 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C6C0800323578A1800FF76F3 /* main.c */; };
 		C6C0801123578AD800FF76F3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6C0801023578AD800FF76F3 /* main.cpp */; };
 		C6C0801723578B6300FF76F3 /* Queue Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6C0801623578B6300FF76F3 /* Queue Tests.cpp */; };
@@ -39,6 +40,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C698D6A7235AAE44001127A2 /* Misc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Misc.h; sourceTree = "<group>"; };
+		C698D6A8235AAE44001127A2 /* Misc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Misc.c; sourceTree = "<group>"; };
 		C6C0800023578A1800FF76F3 /* Program 4 Fast Food */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Program 4 Fast Food"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C0800323578A1800FF76F3 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		C6C0800E23578AD800FF76F3 /* Fast Food Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Fast Food Tests"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +103,8 @@
 				C6C0801923578C6700FF76F3 /* Queue.c */,
 				C6C0801E2357AE5900FF76F3 /* Node.h */,
 				C6C0801F2357AE5900FF76F3 /* Node.c */,
+				C698D6A7235AAE44001127A2 /* Misc.h */,
+				C698D6A8235AAE44001127A2 /* Misc.c */,
 			);
 			path = "Program 4 Fast Food";
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C698D6A9235AAE44001127A2 /* Misc.c in Sources */,
 				C6C080202357AE5900FF76F3 /* Node.c in Sources */,
 				C6F6D8232357D821000B3B2D /* Manager.c in Sources */,
 				C6C0800423578A1800FF76F3 /* main.c in Sources */,

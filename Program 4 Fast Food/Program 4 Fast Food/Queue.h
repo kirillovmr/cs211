@@ -15,6 +15,10 @@ struct Queue {
     struct Node *_Head;
     struct Node *_Tail;
     int _size;
+};
+
+extern const struct QueueClass {
+    struct Queue (*new)(void);
     
     void (*push)(struct Queue *this, struct Node *node);
     void (*pop)(struct Queue *this);
@@ -25,10 +29,6 @@ struct Queue {
     
     struct Node* (*search)(struct Queue *this, char *key);
     int (*delete)(struct Queue *this, char *key);
-};
-
-extern const struct QueueClass {
-    struct Queue (*new)(void);
 } Queue;
 
 #endif /* Queue_h */

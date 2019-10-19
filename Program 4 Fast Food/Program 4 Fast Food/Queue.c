@@ -7,7 +7,6 @@
 //
 
 #include <string.h>
-#include <stdio.h>
 #include "Queue.h"
 #include "Node.h"
 
@@ -26,13 +25,11 @@ static void pop(struct Queue *this) {
         return;
     
     struct Node *next = this->_Head->next;
-    this->_Head->destroy(this->_Head);
+    Node.destroy(this->_Head);
     
     this->_Head = next;
-    if(this->_size == 1)
+    if(this->_size-- == 1)
         this->_Tail = NULL;
-    
-    this->_size -= 1;
 }
 
 static struct Node* front(struct Queue *this) {
@@ -52,7 +49,7 @@ static int empty(struct Queue *this) {
 }
 
 static struct Node* search(struct Queue *this, char *key) {
-    struct Node *temp = this->front(this);
+    struct Node *temp = this->_Head;
     while(temp != NULL) {
         if (strcmp(temp->name, key) == 0)
             return temp;
@@ -67,12 +64,12 @@ static int delete(struct Queue *this, char *key) {
     
     // If key in Head
     if (strcmp(this->_Head->name, key) == 0) {
-        this->pop(this);
+        Queue.pop(this);
         return 1;
     }
     
     struct Node *parent = NULL;
-    struct Node *temp = this->front(this);
+    struct Node *temp = this->_Head;
     
     while(temp != NULL) {
         if (strcmp(temp->name, key) == 0)
@@ -90,7 +87,7 @@ static int delete(struct Queue *this, char *key) {
     if (temp->next == NULL)
         this->_Tail = parent;
         
-    temp->destroy(temp);
+    Node.destroy(temp);
     this->_size -= 1;
     
     return 1;
@@ -101,17 +98,19 @@ static struct Queue new(void) {
         ._Head = NULL,
         ._Tail = NULL,
         ._size = 0,
-        
-        .push   = &push,
-        .pop    = &pop,
-        .front  = &front,
-        .back   = &back,
-        .size   = &size,
-        .empty  = &empty,
-        
-        .search = &search,
-        .delete = &delete,
     };
 }
 
-const struct QueueClass Queue = { .new = &new };
+const struct QueueClass Queue = {
+    .new = &new,
+    
+    .push   = &push,
+    .pop    = &pop,
+    .front  = &front,
+    .back   = &back,
+    .size   = &size,
+    .empty  = &empty,
+    
+    .search = &search,
+    .delete = &delete,
+};

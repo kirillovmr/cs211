@@ -10,16 +10,27 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Manager.h"
+#include "Misc.h"
 
-void getStringInput(char *dest) {
-    int i = 0, begin = 0; char c;
-    while(TRUE) {
-        c = getchar();
-        if (c == 10) { break; }
-        if (begin) { dest[i++] = c; }
-        else if (c == ' ') { begin = 1; }
-    }
-    dest[i+1] = '\0';
+void _displayAddOrderError(char type, int name, struct Node *n) {
+    if (!name)
+        printf ("Error: %s command requires an integer value of at least 0\n", type=='a'?"Add":"Call-ahead");
+    else
+        printf ("Error: %s command requires a name to be given\n", type=='a'?"Add":"Call-ahead");
+    printf ("%s command is of form: a <# burgers> <# salads> <name>\n", type=='a'?"Add":"Call-ahead");
+    printf ("  where:<# burgers> is the number of ordered burgers\n");
+    printf ("        <# salads> is the number of ordered salads\n");
+    printf ("        <name> is the name of the person putting the order\n");
+    Node.destroy(n);
+    if (!name)
+        clearToEoln();
+}
+
+void _retrieveOrderError() {
+    printf ("Error: Retrieve command requires an integer value of at least 0\n");
+    printf ("Retrieve command is of form: r <# burgers> <# salads>\n");
+    printf ("  where: <# burgers> is the number of burgers waiting on the counter for pick up\n");
+    printf ("         <# saladss> is the number of salads waiting on the counter for pick up\n");
 }
 
 static void start(struct Manager *this) {
@@ -35,34 +46,37 @@ static void start(struct Manager *this) {
                 break;
             case '?':
                 Manager.help();
+                clearToEoln();
                 break;
             case 'a':
-                this->addOrder(this, 'a');
+                Manager.addOrder(this, 'a');
                 break;
             case 'c':
-                this->addOrder(this, 'c');
+                Manager.addOrder(this, 'c');
                 break;
             case 'w':
-                this->waiting(this);
+                Manager.waiting(this);
                 break;
             case 'r':
-                this->retrieve(this);
+                Manager.retrieve(this);
+                clearToEoln();
                 break;
             case 'l':
-                this->listOrders(this);
+                Manager.listOrders(this);
                 break;
             case 't':
+                Manager.estimateTime(this);
                 break;
             case 'd':
-                this->displayOrders(this);
+                Manager.displayOrders(this);
+                clearToEoln();
                 break;
             default:
                 printf ("%c - in not a valid command\n", command);
                 printf ("For a list of valid commands, type ?\n");
+                clearToEoln();
                 break;
         }
-        if (command != 'a' && command != 'c' && command != 'w' && command != 'l')
-            Manager.clearToEoln();
     }
 }
 
@@ -70,58 +84,32 @@ static void addOrder(struct Manager *this, char type) {
     struct Node *n = Node.newEmpty();
     
     scanf("%d", &n->burgers);
-    if (n->burgers < 0) {
-        printf ("Error: %s command requires an integer value of at least 0\n", type=='a'?"Add":"Call-ahead");
-        printf ("%s command is of form: a <# burgers> <# salads> <name>\n", type=='a'?"Add":"Call-ahead");
-        printf ("  where:<# burgers> is the number of ordered burgers\n");
-        printf ("        <# salads> is the number of ordered salads\n");
-        printf ("        <name> is the name of the person putting the order\n");
-        n->destroy(n);
-        Manager.clearToEoln();
-        return;
-    }
+    if (n->burgers < 0) { _displayAddOrderError(type, 0, n); return; }
     
     scanf("%d", &n->salads);
-    if (n->salads < 0) {
-        printf ("Error: %s command requires an integer value of at least 0\n", type=='a'?"Add":"Call-ahead");
-        printf ("%s command is of form: a <# burgers> <# salads> <name>\n", type=='a'?"Add":"Call-ahead");
-        printf ("  where:<# burgers> is the number of ordered burgers\n");
-        printf ("        <# salads> is the number of ordered salads\n");
-        printf ("        <name> is the name of the person putting the order\n");
-        n->destroy(n);
-        Manager.clearToEoln();
-        return;
-    }
+    if (n->salads < 0) { _displayAddOrderError(type, 0, n); return; }
     
     getStringInput(n->name);
-    if (n->name[0] == '\0') {
-        printf ("Error: %s command requires a name to be given\n", type=='a'?"Add":"Call-ahead");
-        printf ("%s command is of form: a <# burgers> <# salads> <name>\n", type=='a'?"Add":"Call-ahead");
-        printf ("  where:<# burgers> is the number of ordered burgers\n");
-        printf ("        <# salads> is the number of ordered salads\n");
-        printf ("        <name> is the name of the person putting the order\n");
-        n->destroy(n);
-        return;
-    }
+    if (n->name[0] == '\0') { _displayAddOrderError(type, 1, n); return; }
 
-    if (this->q.search(&this->q, n->name) != NULL) {
+    if (Queue.search(&this->q, n->name) != NULL) {
         printf ("Error: Order for \"%s\" already exists\n", n->name);
-        n->destroy(n);
+        Node.destroy(n);
         return;
     }
-    
-    n->inRestaurant = type=='a' ? YES : NO;
     
     printf ("Adding %s order for \"%s\": %d burgers and %d salads\n",
             type=='a'?"In-restaurant":"Call-ahead", n->name, n->burgers, n->salads);
-    this->q.push( &this->q, n );
+    
+    n->inRestaurant = type=='a' ? YES : NO;
+    Queue.push( &this->q, n );
 }
 
 static void waiting(struct Manager *this) {
     char name[30];
     getStringInput(name);
     
-    struct Node *res = this->q.search(&this->q, name);
+    struct Node *res = Queue.search(&this->q, name);
     if (res == NULL) {
         printf ("Error: There is no Call-ahead order for \"%s\"\n", name);
         return;
@@ -132,30 +120,18 @@ static void waiting(struct Manager *this) {
 }
 
 static void retrieve(struct Manager *this) {
-    int PreparedBurgers;
+    int PreparedBurgers, PreparedSalads;
+    
     scanf("%d", &PreparedBurgers);
-    if (PreparedBurgers < 0) {
-        printf ("Error: Retrieve command requires an integer value of at least 0\n");
-        printf ("Retrieve command is of form: r <# burgers> <# salads>\n");
-        printf ("  where: <# burgers> is the number of burgers waiting on the counter for pick up\n");
-        printf ("         <# saladss> is the number of salads waiting on the counter for pick up\n");
-        return;
-    }
+    if (PreparedBurgers < 0) { _retrieveOrderError(); return; }
 
-    int PreparedSalads;
     scanf("%d", &PreparedSalads);
-    if (PreparedSalads < 0) {
-        printf ("Error: Retrieve command requires an integer value of at least 0\n");
-        printf ("Retrieve command is of form: r <# burgers> <# salads>\n");
-        printf ("  where: <# burgers> is the number of burgers waiting on the counter for pick up\n");
-        printf ("         <# saladss> is the number of salads waiting on the counter for pick up\n");
-        return;
-    }
+    if (PreparedSalads < 0) { _retrieveOrderError(); return; }
 
     printf ("Retrieve (and remove) the first group that can pick up the order of %d burgers and %d salads\n",
             PreparedBurgers ,PreparedSalads);
     
-    struct Node *t = this->q.front(&this->q);
+    struct Node *t = Queue.front(&this->q);
     while(t != NULL) {
         if (PreparedBurgers >= t->burgers && PreparedSalads >= t->salads && t->inRestaurant == YES)
             break;
@@ -168,23 +144,23 @@ static void retrieve(struct Manager *this) {
     }
     
     printf ("Order was given to \"%s\": %d burgers and %d salads\n", t->name, t->burgers, t->salads);
-    if (this->q.delete(&this->q, t->name) == 0) {
+    if (Queue.delete(&this->q, t->name) == 0) {
         printf("ERROR: Order was not deleted from queue\n");
     }
 }
 
 static void listOrders(struct Manager *this) {
     char name[30];
-    getStringInput(name);
     
-    if (this->q.search(&this->q, name) == NULL) {
+    getStringInput(name);
+    if (Queue.search(&this->q, name) == NULL) {
         printf ("Error: There is no order for \"%s\"\n", name);
         return;
     }
     
     printf ("Order for \"%s\" is behind the following orders\n", name);
     
-    struct Node *t = this->q.front(&this->q);
+    struct Node *t = Queue.front(&this->q);
     while(t != NULL) {
         if (strcmp(t->name, name) == 0)
             break;
@@ -195,16 +171,37 @@ static void listOrders(struct Manager *this) {
     }
 }
 
+static void estimateTime(struct Manager *this) {
+    char name[30];
+    int minutesToWait = 0;
+    
+    getStringInput(name);
+    if (Queue.search(&this->q, name) == NULL) {
+        printf ("Error: There is no order for \"%s\"\n", name);
+        return;
+    }
+    
+    struct Node *t = Queue.front(&this->q);
+    while(t != NULL) {
+        minutesToWait += t->burgers * this->timeToPrepareBurger
+                        + t->salads * this->timeToPrepareSalad;
+        if (strcmp(t->name, name) == 0)
+            break;
+        t = t->next;
+    }
+    
+    printf ("Estimated waiting time for \"%s\" is %d minutes\n", name, minutesToWait);
+}
+
 static void displayOrders(struct Manager *this) {
-    printf ("There are %d orders in a queue:\n", this->q.size(&this->q));
-    struct Node *t = this->q.front(&this->q);
+    printf ("There are %d orders in a queue:\n", Queue.size(&this->q));
+    struct Node *t = Queue.front(&this->q);
     while(t != NULL) {
         printf(" *%s* - %d burgers and %d salads for \"%s\"\n",
                t->inRestaurant==YES?"In-rest":"Call-ahead", t->burgers, t->salads, t->name);
         t = t->next;
     }
 }
-
 
 static void help() {
     printf ("The commands for this program are:\n\n");
@@ -219,27 +216,23 @@ static void help() {
     printf ("t <name> - display an estimated wait time for the given order name\n");
 }
 
-static void clearToEoln() {
-    int ch;
-    do { ch = getc(stdin); }
-    while ((ch != '\n') && (ch != EOF));
-}
-
 static struct Manager new() {
     return (struct Manager) {
         .q = Queue.new(),
-        
-        .start = &start,
-        .addOrder = &addOrder,
-        .waiting = &waiting,
-        .retrieve = &retrieve,
-        .listOrders = &listOrders,
-        .displayOrders = &displayOrders,
+        .timeToPrepareBurger = 10,
+        .timeToPrepareSalad = 5,
     };
 }
 
 const struct ManagerClass Manager = {
     .new = &new,
+    
     .help = &help,
-    .clearToEoln = &clearToEoln,
+    .start = &start,
+    .addOrder = &addOrder,
+    .waiting = &waiting,
+    .retrieve = &retrieve,
+    .listOrders = &listOrders,
+    .estimateTime = &estimateTime,
+    .displayOrders = &displayOrders,
 };
