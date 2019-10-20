@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C66C2FB6235C2D2900663D5B /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = C66C2FB5235C2D2900663D5B /* makefile */; };
 		C698D6A9235AAE44001127A2 /* Misc.c in Sources */ = {isa = PBXBuildFile; fileRef = C698D6A8235AAE44001127A2 /* Misc.c */; };
 		C6C0800423578A1800FF76F3 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C6C0800323578A1800FF76F3 /* main.c */; };
 		C6C0801123578AD800FF76F3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6C0801023578AD800FF76F3 /* main.cpp */; };
@@ -40,6 +41,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C66C2FB5235C2D2900663D5B /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 		C698D6A7235AAE44001127A2 /* Misc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Misc.h; sourceTree = "<group>"; };
 		C698D6A8235AAE44001127A2 /* Misc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Misc.c; sourceTree = "<group>"; };
 		C6C0800023578A1800FF76F3 /* Program 4 Fast Food */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Program 4 Fast Food"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C0800323578A1800FF76F3 /* main.c */,
+				C66C2FB5235C2D2900663D5B /* makefile */,
 				C6F6D8212357D821000B3B2D /* Manager.h */,
 				C6F6D8222357D821000B3B2D /* Manager.c */,
 				C6C0801823578C6700FF76F3 /* Queue.h */,
@@ -200,6 +203,7 @@
 			files = (
 				C698D6A9235AAE44001127A2 /* Misc.c in Sources */,
 				C6C080202357AE5900FF76F3 /* Node.c in Sources */,
+				C66C2FB6235C2D2900663D5B /* makefile in Sources */,
 				C6F6D8232357D821000B3B2D /* Manager.c in Sources */,
 				C6C0800423578A1800FF76F3 /* main.c in Sources */,
 				C6C0801A23578C6700FF76F3 /* Queue.c in Sources */,
