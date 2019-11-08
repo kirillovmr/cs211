@@ -11,7 +11,6 @@
 
 #include "Stack.hpp"
 #include <iostream>
-#include <string>
 
 class Evaluator {
 private:
@@ -19,9 +18,13 @@ private:
     MyStack m_operatorStack;
     static const int m_inputSize = 256;
     char m_input[m_inputSize];
+    bool m_debug;
+    
+    void printCommands();
+    void popAndEval();
     
 public:
-    Evaluator() = default;
+    Evaluator(bool debug = false);
     
     void operator()(std::istream &stream);
 };

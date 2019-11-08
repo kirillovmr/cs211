@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C6CA6ED8237328BD009A4BF5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6CA6ED7237328BD009A4BF5 /* main.cpp */; };
+		C6C06F4C2376155300460D8A /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = C6C06F4B2376155300460D8A /* makefile */; };
+		C6CA6ED8237328BD009A4BF5 /* vkiril2Proj5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6CA6ED7237328BD009A4BF5 /* vkiril2Proj5.cpp */; };
 		C6CA6EE0237328D9009A4BF5 /* Stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6CA6EDE237328D9009A4BF5 /* Stack.cpp */; };
 		C6CA6EE72375EAD5009A4BF5 /* Evaluator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6CA6EE52375EAD5009A4BF5 /* Evaluator.cpp */; };
 /* End PBXBuildFile section */
@@ -25,8 +26,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C6C06F4B2376155300460D8A /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 		C6CA6ED4237328BD009A4BF5 /* CS 211 Infix Evaluator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CS 211 Infix Evaluator"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6CA6ED7237328BD009A4BF5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C6CA6ED7237328BD009A4BF5 /* vkiril2Proj5.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vkiril2Proj5.cpp; sourceTree = "<group>"; };
 		C6CA6EDE237328D9009A4BF5 /* Stack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stack.cpp; sourceTree = "<group>"; };
 		C6CA6EDF237328D9009A4BF5 /* Stack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stack.hpp; sourceTree = "<group>"; };
 		C6CA6EE52375EAD5009A4BF5 /* Evaluator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Evaluator.cpp; sourceTree = "<group>"; };
@@ -67,7 +69,8 @@
 				C6CA6EDE237328D9009A4BF5 /* Stack.cpp */,
 				C6CA6EE62375EAD5009A4BF5 /* Evaluator.hpp */,
 				C6CA6EE52375EAD5009A4BF5 /* Evaluator.cpp */,
-				C6CA6ED7237328BD009A4BF5 /* main.cpp */,
+				C6CA6ED7237328BD009A4BF5 /* vkiril2Proj5.cpp */,
+				C6C06F4B2376155300460D8A /* makefile */,
 			);
 			path = "CS 211 Infix Evaluator";
 			sourceTree = "<group>";
@@ -131,7 +134,8 @@
 			files = (
 				C6CA6EE0237328D9009A4BF5 /* Stack.cpp in Sources */,
 				C6CA6EE72375EAD5009A4BF5 /* Evaluator.cpp in Sources */,
-				C6CA6ED8237328BD009A4BF5 /* main.cpp in Sources */,
+				C6C06F4C2376155300460D8A /* makefile in Sources */,
+				C6CA6ED8237328BD009A4BF5 /* vkiril2Proj5.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

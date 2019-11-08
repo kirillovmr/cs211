@@ -9,7 +9,7 @@
 #ifndef Stack_hpp
 #define Stack_hpp
 
-#include <stdio.h>
+#include <iostream>
 
 class MyStack {
 private:

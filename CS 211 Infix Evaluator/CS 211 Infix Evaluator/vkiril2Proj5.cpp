@@ -11,7 +11,12 @@
 
 int main(int argc, const char * argv[]) {
     
-    Evaluator ev;
+    bool debug = false;
+    if (argc > 1)
+        if (strncmp(argv[1], "-d", 2) == 0)
+            debug = true;
+    
+    Evaluator ev(debug);
     ev(std::cin);
     
     return 0;

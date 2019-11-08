@@ -8,6 +8,8 @@
 
 #include "Stack.hpp"
 
+using std::cout;
+
 MyStack::MyStack(): size(0), capacity(2){
     data = new int(capacity);
 }
@@ -50,7 +52,8 @@ void MyStack::pop(){
 int MyStack::popTop(){
     if(size > 0)
         return data[--size];
-    return -1;
+    cout << "Error: Trying to perform a top operation on an empty stack.\n";
+    return -999;
 }
 
 // “clear” the stack to remove any values it contains
