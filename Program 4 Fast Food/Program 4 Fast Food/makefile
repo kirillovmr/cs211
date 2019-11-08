@@ -10,7 +10,7 @@ Manager.o: Manager.c Manager.h Misc.h
 Queue.o: Queue.c Queue.h Node.h
 	gcc -c Queue.c
 	
-Node.o: Node.c Node.h
+Node.o: Node.c Node.h Misc.h
 	gcc -c Node.c
 	
 Misc.o: Misc.c Misc.h

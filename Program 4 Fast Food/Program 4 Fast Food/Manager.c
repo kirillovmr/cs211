@@ -133,6 +133,8 @@ static void retrieve(struct Manager *this) {
     
     struct Node *t = Queue.front(&this->q);
     while(t != NULL) {
+        if (this->debug)
+            Node.print(t);
         if (PreparedBurgers >= t->burgers && PreparedSalads >= t->salads && t->inRestaurant == YES)
             break;
         t = t->next;
@@ -183,6 +185,9 @@ static void estimateTime(struct Manager *this) {
     
     struct Node *t = Queue.front(&this->q);
     while(t != NULL) {
+        if (this->debug)
+            Node.print(t);
+        
         minutesToWait += t->burgers * this->timeToPrepareBurger
                         + t->salads * this->timeToPrepareSalad;
         if (strcmp(t->name, name) == 0)
@@ -216,9 +221,10 @@ static void help() {
     printf ("t <name> - display an estimated wait time for the given order name\n");
 }
 
-static struct Manager new() {
+static struct Manager new(boolean debug) {
     return (struct Manager) {
-        .q = Queue.new(),
+        .q = Queue.new(debug),
+        .debug = debug,
         .timeToPrepareBurger = 10,
         .timeToPrepareSalad = 5,
     };

@@ -15,10 +15,11 @@ struct Queue {
     struct Node *_Head;
     struct Node *_Tail;
     int _size;
+    int debug;
 };
 
 extern const struct QueueClass {
-    struct Queue (*new)(void);
+    struct Queue (*new)(boolean debug);
     
     void (*push)(struct Queue *this, struct Node *node);
     void (*pop)(struct Queue *this);

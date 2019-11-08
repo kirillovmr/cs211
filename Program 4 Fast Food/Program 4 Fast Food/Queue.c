@@ -51,6 +51,8 @@ static int empty(struct Queue *this) {
 static struct Node* search(struct Queue *this, char *key) {
     struct Node *temp = this->_Head;
     while(temp != NULL) {
+        if (this->debug)
+            Node.print(temp);
         if (strcmp(temp->name, key) == 0)
             return temp;
         temp = temp->next;
@@ -93,11 +95,12 @@ static int delete(struct Queue *this, char *key) {
     return 1;
 }
 
-static struct Queue new(void) {
+static struct Queue new(boolean debug) {
     return (struct Queue) {
         ._Head = NULL,
         ._Tail = NULL,
         ._size = 0,
+        .debug = debug,
     };
 }
 

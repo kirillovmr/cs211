@@ -16,11 +16,14 @@
 //
 
 #include <stdio.h>
+#include <string.h>
 #include "Manager.h"
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char *argv[]) {
     
-    struct Manager m = Manager.new();
+    boolean debug = argc > 1 && strcmp(argv[1], "-d") == 0 ? 1 : 0;
+    
+    struct Manager m = Manager.new(debug);
     Manager.start(&m);
     
     return 0;

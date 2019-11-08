@@ -9,10 +9,12 @@
 #ifndef Node_h
 #define Node_h
 
+#include "Misc.h"
+
 struct Node {
     char *name;
     int burgers, salads;
-    int inRestaurant;
+    boolean inRestaurant;
     struct Node *next;
 };
 
@@ -20,6 +22,7 @@ extern const struct NodeClass {
     struct Node* (*new)(char p_name[30], int p_burgers, int p_salads, int inRest);
     struct Node* (*newEmpty)(void);
     
+    void (*print)(struct Node *this);
     void (*destroy)(struct Node *this);
 } Node;
 

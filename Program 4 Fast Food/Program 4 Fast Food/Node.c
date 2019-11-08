@@ -6,13 +6,9 @@
 //  Copyright © 2019 Viktor Kirillov. All rights reserved.
 //
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "Node.h"
-
-static void destroy(struct Node *this) {
-    free(this->name);
-    free(this);
-}
 
 static struct Node* new(char p_name[30], int p_burgers, int p_salads, int p_inRest) {
     struct Node *n = (struct Node*)malloc(sizeof(struct Node));
@@ -36,10 +32,21 @@ static struct Node* newEmpty() {
     return n;
 }
 
+static void print(struct Node *this) {
+    printf("-> %s order for \"%s\": %d burgers, %d salads.\n",
+           this->inRestaurant ? "In-rest" : "Call-ahead",
+           this->name, this->burgers, this->salads);
+}
+
+static void destroy(struct Node *this) {
+    free(this->name);
+    free(this);
+}
 
 const struct NodeClass Node = {
     .new = &new,
     .newEmpty = &newEmpty,
     
+    .print = &print,
     .destroy = &destroy,
 };

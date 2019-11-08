@@ -14,12 +14,13 @@
 
 struct Manager {
     struct Queue q;
+    int debug;
     int timeToPrepareBurger;
     int timeToPrepareSalad;
 };
 
 extern const struct ManagerClass {
-    struct Manager (*new)(void);
+    struct Manager (*new)(boolean debug);
     
     void (*help)(void);
     void (*start)(struct Manager *this);
