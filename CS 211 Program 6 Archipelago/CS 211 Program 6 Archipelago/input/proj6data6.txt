@@ -1,0 +1,12 @@
+# setting up a archipelago network with 6 islands
+#
+# this will reflect the on shown in the first picture of the
+#   project write-up
+r 6
+i 1 2
+i 2 3
+i 2 4
+i 2 5
+i 4 5
+i 4 6
+i 6 3
